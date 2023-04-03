@@ -146,5 +146,5 @@ class ToolButton(QToolButton):
 
         w, h = self.iconSize().width(), self.iconSize().height()
         y = (self.height() - h) / 2
-        x = (self.width() - w) / 2
+        x  = (self.width() - w) / 2
         self._drawIcon(self._icon, painter, QRectF(x, y, w, h))

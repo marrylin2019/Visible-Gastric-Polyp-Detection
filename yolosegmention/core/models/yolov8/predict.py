@@ -5,28 +5,33 @@
 @Date    ：2023/03/19 21:51 
 """
 import re
+from pathlib import Path
 
 import cv2
-from Code.Core.ultralytics import YOLO
-from Code.Beans.StreamTypes import TYPES, PATTERNS
-from Code.Beans import Exit
+from ultralytics import YOLO
+
+from yolosegmention.beans import StreamTypes, PATTERNS
+from yolosegmention.exceptions import RuntimeException
 
 
 def predict(_type: str, path: str, pre_weights_path: str):
-    if _type not in TYPES:
-        Exit.exit_process(Exit.UNREACHABLE_ERR)
-    if re.match(PATTERNS[_type], path) is None:
-        Exit.exit_process(Exit.UNREACHABLE_ERR)
-    if _type == TYPES[0]:
-        predictImg(path, pre_weights_path)
+    try:
+        _type = StreamTypes(_type)
+    except ValueError:
+        raise RuntimeException(f'{_type}是非法的数据类型！')
+    else:
+        if re.match(PATTERNS[_type], path) is None:
+            raise RuntimeException(f'{path}格式不合法！')
+        if _type == StreamTypes.PICTURE:
+            predictImg(path, pre_weights_path)
+            pass
+        elif _type == StreamTypes.VIDEO:
+            predictVideo(path, pre_weights_path)
+            pass
+        elif _type == StreamTypes.STREAM:
+            predictStream()
+            pass
         pass
-    elif _type == TYPES[1]:
-        predictVideo()
-        pass
-    elif _type == TYPES[2]:
-        predictStream()
-        pass
-    pass
 
 
 def predictImg(imgPath: str, pre_weights_path: str):
@@ -36,14 +41,11 @@ def predictImg(imgPath: str, pre_weights_path: str):
     pass
 
 
-def predictVideo():
+def predictVideo(videoPath: str, pre_weights_path: str):
+    model = YOLO(pre_weights_path)
+    results = model.predict(source=videoPath, save=True)
     pass
 
 
 def predictStream():
     pass
-
-
-if __name__ == '__main__':
-    predict('图片', r'D:\Program\GraduationProject\data\segmented-images\images\0b556d02-f9ca-4270-b568-3200335c7d08.png',
-            './pre-weights/best.pt')

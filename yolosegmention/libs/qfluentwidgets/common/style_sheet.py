@@ -3,7 +3,6 @@ from enum import Enum
 from string import Template
 import weakref
 
-import darkdetect
 from PyQt6.QtCore import QFile, QObject
 from PyQt6.QtGui import QColor
 from PyQt6.QtWidgets import QWidget
@@ -122,10 +121,6 @@ def setTheme(theme: Theme, save=False):
     save: bool
         whether to save the change to config file
     """
-    if theme == Theme.AUTO:
-        theme = darkdetect.theme()
-        theme = Theme(theme) if theme else Theme.LIGHT
-
     qconfig.set(qconfig.themeMode, theme, save)
     updateStyleSheet()
 

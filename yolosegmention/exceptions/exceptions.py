@@ -33,3 +33,21 @@ class RuntimeException(Exception):
     def __str__(self):
         return self.__trace_back_info + self.__info
 
+
+class SqlException(Exception):
+    def __init__(self, info: str):
+        super().__init__()
+        self._info = info
+
+    def __str__(self):
+        return self._info
+
+
+class SqlCannotConnectException(Exception):
+    def __init__(self):
+        super().__init__()
+
+
+class SqlNoMatchException(Exception):
+    def __init__(self):
+        super().__init__()

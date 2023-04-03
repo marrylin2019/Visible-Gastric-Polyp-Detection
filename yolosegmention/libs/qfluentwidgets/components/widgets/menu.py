@@ -174,6 +174,8 @@ class MenuActionListWidget(QListWidget):
 class RoundMenu(QWidget):
     """ Round corner menu """
 
+    closedSignal = pyqtSignal()
+
     def __init__(self, title="", parent=None):
         super().__init__(parent=parent)
         self._title = title
@@ -491,6 +493,10 @@ class RoundMenu(QWidget):
         self.isHideBySystem = True
         e.accept()
 
+    def closeEvent(self, e):
+        e.accept()
+        self.closedSignal.emit()
+
     def menuActions(self):
         return self._actions
 
@@ -581,9 +587,8 @@ class RoundMenu(QWidget):
 
         rect = QApplication.screenAt(QCursor.pos()).availableGeometry()
         w, h = self.width() + 5, self.height() + 5
-        # pos.setX(max(10, min(pos.x() - self.layout().contentsMargins().left(), rect.right() - w)))
         pos.setX(min(pos.x() - self.layout().contentsMargins().left(), rect.right() - w))
-        pos.setY(max(10, min(pos.y() - 4, rect.bottom() - h)))
+        pos.setY(min(pos.y() - 4, rect.bottom() - h))
 
         if ani:
             self.ani.setStartValue(pos-QPoint(0, h/2))

@@ -1,10 +1,29 @@
 # coding: utf-8
-from PyQt6.QtCore import QSize, Qt
+from PyQt6.QtCore import QSize, Qt, QRectF
+from PyQt6.QtGui import QPainter
 from PyQt6.QtWidgets import QLineEdit, QToolButton
 
 from ...common.style_sheet import setStyleSheet
 from ...common.icon import FluentIcon as FIF
 from .menu import LineEditMenu
+
+
+class ClearButton(QToolButton):
+    """ Clear button """
+
+    def __init__(self, parent=None):
+        super().__init__(parent=parent)
+        self.setFixedSize(29, 25)
+        self.setIconSize(QSize(10, 10))
+        self.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.setObjectName('clearButton')
+        setStyleSheet(self, 'line_edit')
+
+    def paintEvent(self, e):
+        super().paintEvent(e)
+        painter = QPainter(self)
+        painter.setRenderHints(QPainter.RenderHint.Antialiasing | QPainter.RenderHint.SmoothPixmapTransform)
+        FIF.CLOSE.render(painter, QRectF(9.5, 7, 10, 10))
 
 
 class LineEdit(QLineEdit):
@@ -16,25 +35,18 @@ class LineEdit(QLineEdit):
 
         setStyleSheet(self, 'line_edit')
         self.setFixedHeight(33)
-        self.clearButton = QToolButton(self)
+        self.setAttribute(Qt.WidgetAttribute.WA_MacShowFocusRect, False)
 
-        self.setTextMargins(0, 0, 33, 0)
-
-        self.clearButton.setObjectName('clearButton')
+        self.clearButton = ClearButton(self)
         self.clearButton.move(self.width() - 33, 4)
-        self.clearButton.setFixedSize(29, 25)
         self.clearButton.hide()
-
-        self.clearButton.setIcon(FIF.CLOSE.icon())
-        self.clearButton.setIconSize(QSize(10, 10))
-
-        self.clearButton.setCursor(Qt.CursorShape.PointingHandCursor)
 
         self.clearButton.clicked.connect(self.clear)
         self.textChanged.connect(self.__onTextChanged)
 
     def setClearButtonEnabled(self, enable: bool):
         self._isClearButtonEnabled = enable
+        self.setTextMargins(0, 0, 28*enable, 0)
 
     def isClearButtonEnabled(self) -> bool:
         return self._isClearButtonEnabled
@@ -59,5 +71,3 @@ class LineEdit(QLineEdit):
 
     def resizeEvent(self, e):
         self.clearButton.move(self.width() - 33, 4)
-
-

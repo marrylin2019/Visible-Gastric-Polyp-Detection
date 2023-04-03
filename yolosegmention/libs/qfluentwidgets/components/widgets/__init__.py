@@ -9,3 +9,6 @@ from .tool_tip import ToolTip, ToolTipFilter
 from .button import PrimaryPushButton, PushButton, RadioButton, HyperlinkButton, ToolButton
 from .line_edit import LineEdit
 from .check_box import CheckBox
+from .icon_widget import IconWidget
+from .label import PixmapLabel
+from .info_bar import InfoBar, InfoBarIcon, InfoBarPosition

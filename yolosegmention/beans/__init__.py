@@ -6,7 +6,8 @@
 """
 from .exit import *
 from .color import COLORS
-from .datasetypes import DatasetTypes
+from .dataset_model_types import DatasetTypes
+from .stream_types import StreamTypes, PATTERNS
 
 
 

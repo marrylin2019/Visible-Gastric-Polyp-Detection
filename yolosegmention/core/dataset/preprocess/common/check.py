@@ -38,9 +38,9 @@ def check_Kvasir_SEG(path: str) -> tuple[bool, str]:
 
 
 def check_YOLOv5v8(path: str) -> tuple[bool, str]:
-    configFileName = os.path.split(path)[-1] + '.yaml'
-    configFilePath = os.path.join(path, configFileName)
-    # 核验是否存在‘dataset_file_name.yaml’
+    configFileName = os.path.basename(path)
+    configFilePath = path
+    # 核验是否存在dataset_file_name.yaml
     if not os.path.exists(configFilePath):
         return False, f'请检查"{os.path.normpath(path)}"下是否存在yaml文件，若存在，请确保该文件名为"{configFileName}"'
 

@@ -79,6 +79,30 @@
         <file>images/icons/Menu_white.svg</file>
         <file>images/icons/Return_black.svg</file>
         <file>images/icons/Return_white.svg</file>
+        <file>images/icons/Sync_black.svg</file>
+        <file>images/icons/Sync_white.svg</file>
+        <file>images/icons/GitHub_black.svg</file>
+        <file>images/icons/GitHub_white.svg</file>
+        <file>images/icons/Home_black.svg</file>
+        <file>images/icons/Home_white.svg</file>
+        <file>images/icons/Chat_black.svg</file>
+        <file>images/icons/Chat_white.svg</file>
+        <file>images/icons/Message_black.svg</file>
+        <file>images/icons/Message_white.svg</file>
+        <file>images/icons/Layout_black.svg</file>
+        <file>images/icons/Layout_white.svg</file>
+        <file>images/icons/Album_black.svg</file>
+        <file>images/icons/Album_white.svg</file>
+        <file>images/icons/CheckBox_black.svg</file>
+        <file>images/icons/CheckBox_white.svg</file>
+        <file>images/icons/Scroll_black.svg</file>
+        <file>images/icons/Scroll_white.svg</file>
+        <file>images/icons/Document_black.svg</file>
+        <file>images/icons/Document_white.svg</file>
+        <file>images/icons/Constract_black.svg</file>
+        <file>images/icons/Constract_white.svg</file>
+        <file>images/icons/Code_black.svg</file>
+        <file>images/icons/Code_white.svg</file>
         <file>images/state_tool_tip/close_normal.svg</file>
         <file>images/state_tool_tip/close_hover.svg</file>
         <file>images/state_tool_tip/close_pressed.svg</file>
@@ -94,6 +118,14 @@
         <file>images/check_box/Accept_white.svg</file>
         <file>images/check_box/PartialAccept_black.svg</file>
         <file>images/check_box/PartialAccept_white.svg</file>
+        <file>images/info_bar/Error_light.svg</file>
+        <file>images/info_bar/Error_dark.svg</file>
+        <file>images/info_bar/Success_light.svg</file>
+        <file>images/info_bar/Success_dark.svg</file>
+        <file>images/info_bar/Warning_light.svg</file>
+        <file>images/info_bar/Warning_dark.svg</file>
+        <file>images/info_bar/Info_light.svg</file>
+        <file>images/info_bar/Info_dark.svg</file>
 
         <file>qss/dark/color_dialog.qss</file>
         <file>qss/dark/dialog.qss</file>
@@ -112,6 +144,7 @@
         <file>qss/dark/slider.qss</file>
         <file>qss/dark/line_edit.qss</file>
         <file>qss/dark/check_box.qss</file>
+        <file>qss/dark/info_bar.qss</file>
 
         <file>qss/light/color_dialog.qss</file>
         <file>qss/light/dialog.qss</file>
@@ -130,5 +163,6 @@
         <file>qss/light/slider.qss</file>
         <file>qss/light/line_edit.qss</file>
         <file>qss/light/check_box.qss</file>
+        <file>qss/light/info_bar.qss</file>
     </qresource>
 </RCC>
